@@ -1,0 +1,23 @@
+html, body {
+    height:100%;
+    padding: 0;
+    margin: 0;
+    color: white;
+  }
+
+html{
+    background-image: url('../poll_time.jpg');
+    background-size: cover;
+}
+
+body {
+    background: rgba(0, 0, 0, 0.466);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.btn{
+    font-size: 24px;
+}
