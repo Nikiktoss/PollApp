@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Main Page{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/polls/main_styles.css' %}">
+{% endblock %}
+
+{% block navbar %}
+    <nav class="default__navbar">
+        <div class="navbar__logo">PollsApp</div>
+        <div class="navbar__elements">
+            <a href="#" class="navbar__element">Profile</a>
+            <a href="{% url 'logout' %}" class="navbar__element">Logout</a>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+            <div class="alert_message">
+                {{ message }}
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+{% endblock %}

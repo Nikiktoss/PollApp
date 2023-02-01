@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Login Page{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/accounts/login_styles.css' %}">
+{% endblock %}
+
+{% block navbar %}
+    <nav class="default__navbar">
+        <div class="navbar__logo">PollsApp</div>
+        <div class="navbar__elements">
+            <a href="{% url 'registration_page' %}" class="navbar__element">Registration</a>
+            <a href="{% url 'home' %}" class="navbar__element">Exit</a>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <div class="form__position">
+        <h2 class="form__text">Fill out the form to enter</h2>
+        <form method="post" action="{% url 'login_page' %}" class="login__form">
+            {% csrf_token %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert_message">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+            <div class="form__element">
+                <label class="label_tag">Username:</label>
+                <input type="text" class="input__field" name="username">
+            </div>
+            <div class="form__element">
+                <label class="label_tag">Password:</label>
+                <input type="password" class="input__field" name="password">
+            </div>
+            <button type="submit" class="btn btn-custom-submit">Confirm</button>
+        </form>
+    </div>
+{% endblock %}

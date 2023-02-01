@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Registration Page {% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/accounts/registration_styles.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="form__position">
+        <h2 class="form__text">Please fill out the registration form</h2>
+        <form method="post" action="{% url 'registration_page' %}" class="registration__form">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            {% for field in form %}
+                <div class="form__element">
+                    <label id="{{ field.id_for_label }}" class="label_tag">{{ field.label }}:</label>
+                    {{ field }}
+                </div>
+            {% endfor %}
+
+            <div class="form__buttons">
+                <button type="reset" class="btn btn-danger btn-custom">Cancel</button>
+                <button type="submit" class="btn btn-custom-submit">OK</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
